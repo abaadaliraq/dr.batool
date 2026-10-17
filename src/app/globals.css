@@ -1,26 +1,60 @@
 @import "tailwindcss";
+@import "../styles/landing.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+
+  background: #f4f1e9;
+  color: #242321;
+
+  font-family: var(--font-inter), sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: #a76143;
+  color: #ffffff;
+}
+/* Keep existing component font tokens pointing to the same Arabic typeface.
+   English font variables are intentionally unchanged. */
+:root {
+  --font-arabic: var(--font-tajawal);
+  --font-arabic-ui: var(--font-tajawal);
+  --font-cairo: var(--font-tajawal);
+  --font-ibm-arabic: var(--font-tajawal);
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-tajawal), sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+}
+
+html[lang="ar"] body :is(h2, h3, h4, h5, h6) {
+  font-weight: 500;
+}
+
+html[lang="ar"] body :is(button, [role="tab"], a[class]) {
+  font-family: var(--font-tajawal), sans-serif;
+  font-weight: 500;
 }

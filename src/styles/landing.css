@@ -1,0 +1,963 @@
+/* ========================================
+   DR. BATOOL MOWAFAQ
+   HEADER + HERO
+======================================== */
+
+:root {
+  --paper: #f4f1e9;
+  --paper-dark: #e9e4d9;
+
+  --ink: #242321;
+  --muted: #81796e;
+
+  --terracotta: #a76143;
+  --line: rgba(68, 55, 42, 0.17);
+
+  --font-heading: var(--font-serif);
+  --font-body: var(--font-inter);
+  --font-arabic: var(--font-cairo);
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  width: 100%;
+  height: 78px;
+
+  background: rgba(244, 241, 233, 0.96);
+
+  border-bottom: 1px solid var(--line);
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.site-header--scrolled {
+  background: rgba(244, 241, 233, 0.94);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow: 0 8px 30px rgba(30, 25, 20, 0.045);
+}
+
+.site-header__inner {
+  width: min(100% - 80px, 1520px);
+
+  height: 100%;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 35px;
+}
+
+/* BRAND */
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  color: var(--ink);
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+}
+
+.site-header__monogram {
+  width: 34px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 23px;
+  font-weight: 600;
+
+  letter-spacing: -4px;
+
+  color: var(--terracotta);
+
+  transform: translateX(-2px);
+}
+
+.site-header__brand-name {
+  font-family: var(--font-heading), Georgia, serif;
+
+  font-size: 22px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* NAVIGATION */
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+
+  gap: clamp(12px, 1.7vw, 28px);
+}
+
+.site-header__link {
+  position: relative;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  color: var(--ink);
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: color 0.25s ease;
+}
+
+.site-header__link:hover,
+.site-header__link--active {
+  color: var(--terracotta);
+}
+
+.site-header__link::after {
+  content: "";
+
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--terracotta);
+
+  transition: width 0.3s ease;
+}
+
+.site-header__link:hover::after,
+.site-header__link--active::after {
+  width: 100%;
+}
+
+/* ACTIONS */
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+}
+
+.site-header__language {
+  border: 0;
+  background: transparent;
+
+  color: var(--ink);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: color 0.3s ease;
+}
+
+.site-header__language:hover {
+  color: var(--terracotta);
+}
+
+.site-header__menu-button {
+  display: none;
+}
+
+/* MOBILE MENU */
+
+.mobile-navigation {
+  display: none;
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 750px;
+  min-height: max(750px, calc(100svh - 78px));
+
+  overflow: hidden;
+
+  background: var(--paper);
+
+  isolation: isolate;
+}
+
+/* IMAGE */
+
+.hero__visual {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 76%;
+  height: 100%;
+
+  overflow: hidden;
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+
+  background-color: #c9b6a1;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(244, 241, 233, 0.10),
+      rgba(90, 64, 42, 0.10)
+    ),
+    url("/images/hero-baghdad.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  filter: saturate(0.65) sepia(0.12);
+
+  transform: scale(1.05);
+
+  animation: heroImageReveal 2s ease forwards;
+}
+
+.hero__image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--paper) 0%,
+      rgba(244, 241, 233, 0.96) 10%,
+      rgba(244, 241, 233, 0.55) 35%,
+      rgba(244, 241, 233, 0.02) 68%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(244, 241, 233, 0.13),
+      transparent 30%
+    );
+}
+
+/* ARCHITECTURAL DRAWING */
+
+.hero__drawing {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 80%;
+
+  object-fit: contain;
+
+  opacity: 0.52;
+
+  mix-blend-mode: multiply;
+
+  mask-image: linear-gradient(
+    90deg,
+    black 0%,
+    black 35%,
+    transparent 90%
+  );
+
+  animation: drawingReveal 2.2s ease both;
+}
+
+/* CONTENT CONTAINER */
+
+.hero__container {
+  position: relative;
+
+  width: min(100% - 120px, 1520px);
+
+  min-height: inherit;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.hero__content {
+  position: relative;
+
+  width: min(100%, 570px);
+
+  padding: 70px 0 120px;
+
+  z-index: 5;
+}
+
+/* EYEBROW */
+
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 35px;
+
+  color: var(--terracotta);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero__eyebrow-line {
+  display: block;
+
+  width: 35px;
+  height: 1px;
+
+  background: var(--terracotta);
+}
+
+/* TITLE */
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: var(--font-heading), Georgia, serif;
+
+  font-size: clamp(78px, 8vw, 140px);
+
+  font-weight: 400;
+
+  line-height: 0.87;
+
+  letter-spacing: -4px;
+}
+
+.hero__title span {
+  display: block;
+}
+
+.hero__title span:first-child {
+  animation: fadeUp 1s ease 0.3s both;
+}
+
+.hero__title span:last-child {
+  animation: fadeUp 1s ease 0.45s both;
+}
+
+/* SECONDARY NAME */
+
+.hero__secondary-name {
+  margin-top: 30px;
+
+  font-family: var(--font-arabic), sans-serif;
+
+  font-size: 25px;
+  font-weight: 600;
+
+  color: var(--terracotta);
+
+  animation: fadeUp 1s ease 0.55s both;
+}
+
+/* DIVIDER */
+
+.hero__divider {
+  width: 90px;
+  height: 1px;
+
+  margin: 30px 0;
+
+  background: var(--terracotta);
+
+  opacity: 0.65;
+
+  animation: lineReveal 1s ease 0.7s both;
+}
+
+/* SPECIALIZATION */
+
+.hero__specialization {
+  max-width: 520px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  line-height: 1.8;
+
+  color: var(--ink);
+
+  animation: fadeUp 1s ease 0.75s both;
+}
+
+.hero__specialization-secondary {
+  margin-top: 10px;
+
+  font-family: var(--font-arabic), sans-serif;
+
+  font-size: 13px;
+  line-height: 2;
+
+  color: var(--muted);
+
+  animation: fadeUp 1s ease 0.9s both;
+}
+
+/* BUTTON */
+
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 35px;
+
+  margin-top: 38px;
+  padding: 13px 0;
+
+  border-bottom: 1px solid var(--terracotta);
+
+  color: var(--terracotta);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    gap 0.3s ease,
+    color 0.3s ease;
+
+  animation: fadeUp 1s ease 1s both;
+}
+
+.hero__button:hover {
+  gap: 48px;
+  color: var(--ink);
+}
+
+.hero__button-arrow {
+  font-size: 19px;
+  font-weight: 400;
+}
+
+/* SCROLL */
+
+.hero__scroll {
+  position: absolute;
+
+  bottom: 42px;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 15px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+  letter-spacing: 1.5px;
+
+  animation: fadeUp 1s ease 1.2s both;
+}
+
+.hero__scroll-line {
+  position: relative;
+
+  width: 1px;
+  height: 65px;
+
+  background: rgba(167, 97, 67, 0.25);
+
+  overflow: hidden;
+}
+
+.hero__scroll-line span {
+  display: block;
+
+  width: 100%;
+  height: 50%;
+
+  background: var(--terracotta);
+
+  animation: scrollLine 2.2s ease-in-out infinite;
+}
+
+/* CORNER */
+
+.hero__corner {
+  position: absolute;
+
+  right: 40px;
+  bottom: 40px;
+
+  color: var(--ink);
+
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* ========================================
+   ARABIC VERSION
+======================================== */
+
+.hero--arabic .hero__title {
+  font-family: var(--font-arabic), sans-serif;
+
+  font-size: clamp(65px, 7vw, 112px);
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  letter-spacing: -2px;
+}
+
+.hero--arabic .hero__secondary-name {
+  font-family: var(--font-heading), Georgia, serif;
+
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.hero--arabic .hero__eyebrow {
+  font-family: var(--font-arabic), sans-serif;
+
+  letter-spacing: 0;
+  font-size: 12px;
+}
+
+.hero--arabic .hero__specialization,
+.hero--arabic .hero__specialization-secondary,
+.hero--arabic .hero__button {
+  font-family: var(--font-arabic), sans-serif;
+}
+
+.hero--arabic .hero__visual {
+  right: auto;
+  left: 0;
+}
+
+.hero--arabic .hero__image-overlay {
+  background: linear-gradient(
+    270deg,
+    var(--paper) 0%,
+    rgba(244, 241, 233, 0.96) 10%,
+    rgba(244, 241, 233, 0.55) 35%,
+    rgba(244, 241, 233, 0.02) 68%
+  );
+}
+
+.hero--arabic .hero__drawing {
+  left: auto;
+  right: 0;
+
+  transform: scaleX(-1);
+
+  mask-image: linear-gradient(
+    270deg,
+    black 0%,
+    black 35%,
+    transparent 90%
+  );
+}
+
+.hero--arabic .hero__scroll {
+  left: auto;
+  right: 0;
+}
+
+.hero--arabic .hero__corner {
+  right: auto;
+  left: 40px;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes drawingReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.52;
+  }
+}
+
+@keyframes lineReveal {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  to {
+    opacity: 0.65;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(220%);
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1200px) {
+
+  .site-header__inner {
+    width: calc(100% - 50px);
+  }
+
+  .site-header__nav {
+    gap: 13px;
+  }
+
+  .site-header__brand-name {
+    font-size: 19px;
+  }
+
+  .hero__title {
+    font-size: clamp(70px, 8vw, 115px);
+  }
+
+}
+
+@media (max-width: 1050px) {
+
+  .site-header__nav {
+    display: none;
+  }
+
+  .site-header__menu-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 6px;
+
+    width: 28px;
+    height: 30px;
+
+    padding: 0;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+  }
+
+  .site-header__menu-button span {
+    width: 26px;
+    height: 1px;
+
+    background: var(--ink);
+
+    transition: transform 0.3s ease;
+  }
+
+  .site-header__menu-button.is-open span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .site-header__menu-button.is-open span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
+  .mobile-navigation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 20px 30px;
+
+    background: var(--paper);
+
+    border-bottom: 1px solid var(--line);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .mobile-navigation--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mobile-navigation a {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid var(--line);
+
+    color: var(--ink);
+
+    font-size: 15px;
+
+    text-decoration: none;
+  }
+
+  .mobile-navigation__number {
+    color: var(--terracotta);
+    font-size: 10px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .site-header {
+    height: 66px;
+  }
+
+  .site-header__inner {
+    width: calc(100% - 36px);
+    gap: 12px;
+  }
+
+  .site-header__brand {
+    gap: 8px;
+  }
+
+  .site-header__brand-name {
+    font-size: 19px;
+  }
+
+  .site-header__monogram {
+    font-size: 20px;
+    width: 25px;
+  }
+
+  .site-header__actions {
+    gap: 17px;
+  }
+
+  /* MOBILE HERO */
+
+  .hero {
+    min-height: 790px;
+    min-height: max(790px, calc(100svh - 66px));
+  }
+
+  .hero__container {
+    width: calc(100% - 44px);
+
+    align-items: flex-start;
+  }
+
+  .hero__content {
+    width: 100%;
+
+    padding-top: 75px;
+    padding-bottom: 300px;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 25px;
+
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+  .hero__title {
+    font-size: clamp(64px, 13vw, 95px);
+
+    letter-spacing: -3px;
+  }
+
+  .hero__secondary-name {
+    margin-top: 22px;
+    font-size: 22px;
+  }
+
+  .hero__divider {
+    margin: 22px 0;
+  }
+
+  .hero__specialization {
+    font-size: 12px;
+  }
+
+  .hero__specialization-secondary {
+    max-width: 320px;
+    font-size: 12px;
+  }
+
+  .hero__button {
+    margin-top: 23px;
+  }
+
+  /* IMAGE ON LOWER HALF */
+
+  .hero__visual {
+    top: auto;
+    bottom: 0;
+
+    width: 100%;
+    height: 55%;
+  }
+
+  .hero__image {
+    background-position: 58% center;
+  }
+
+  .hero__image-overlay {
+    background: linear-gradient(
+      180deg,
+      var(--paper) 0%,
+      rgba(244, 241, 233, 0.65) 15%,
+      rgba(244, 241, 233, 0.02) 55%
+    );
+  }
+
+  .hero__drawing {
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.35;
+  }
+
+  .hero__scroll {
+    bottom: 30px;
+  }
+
+  .hero__scroll-line {
+    height: 45px;
+  }
+
+  .hero__corner {
+    right: 22px;
+    bottom: 25px;
+  }
+
+  .hero--arabic .hero__title {
+    font-size: clamp(60px, 12vw, 85px);
+  }
+
+  .hero--arabic .hero__image-overlay {
+    background: linear-gradient(
+      180deg,
+      var(--paper) 0%,
+      rgba(244, 241, 233, 0.65) 15%,
+      rgba(244, 241, 233, 0.02) 55%
+    );
+  }
+
+  .hero--arabic .hero__corner {
+    left: 22px;
+  }
+
+}
+
+@media (max-width: 390px) {
+
+  .site-header__brand-name {
+    font-size: 17px;
+  }
+
+  .hero__title {
+    font-size: 60px;
+  }
+
+  .hero__content {
+    padding-top: 60px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero *,
+  .hero *::before,
+  .hero *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
